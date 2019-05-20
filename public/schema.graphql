@@ -1,0 +1,30 @@
+type Query {
+	isLogin(auth: String!): Boolean!
+	uploads: [File]
+}
+type Mutation {
+	login(username: String!, pwd: String!, auth: String!): Boolean!
+	signup(username: String!, pwd: String!, auth: String!): Boolean!
+	singleUpload (file: Upload!, auth: String!): File!
+	multipleUpload (files: [Upload!]!, auth: String!): [File!]!
+}
+type Subscription {
+    counter: Counter!
+}
+
+
+
+type Counter {
+    count: Int!
+    countStr: String
+}
+
+type File {
+	id: ID!
+	path: String!
+	filename: String!
+	mimetype: String!
+	encoding: String!
+}
+
+scalar Upload
