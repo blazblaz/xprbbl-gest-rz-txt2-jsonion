@@ -9,6 +9,9 @@ const exprDelimiters = {
 		mdCodeJSON: [	a: '```json' ],
 		mdCodeJS: [	a: '```js' ],
 		quotesJSON: {
+			_: {
+				a: '"', 
+			}
 			a: ['"', "'"],
 			z: ['\"', "\'"]
 		},

@@ -2,6 +2,8 @@
 ##################################################################
 
 db.json
+_packagesInDev/node-rhizome/.git
+
 
 # Logs
 logs

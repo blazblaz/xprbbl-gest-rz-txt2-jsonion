@@ -6,14 +6,15 @@ import lowdb from 'lowdb'
 
 
 
-export const initDB = (	dbAdapter = "Memory", 
-												args = {
-													dbSource: null,
-													defaults: { 
-												  	tokens: testDatasets.tokens, 
-												  	context: {}
-												  }
-												}) => {
+export const initDB = ( 
+	dbAdapter = "Memory", 
+	args = {
+		dbSource: null,
+		defaults: { 
+			tokens: testDatasets.tokens, 
+			context: {}
+		}
+}) => {
 
 
   // LowDB initialization
