@@ -1,6 +1,6 @@
 ## Why use lowdb in the first place? Because …
 
-- it structures a simple interface with a few adapters ready to use in-browser and in Node.js (in-memory, localStorage, fileSystem) — so besides using it in-browser (in-memory for testing with smaller datasets and with localStorage for production) development on server-side is made easier by compatibility (though not production-ready)
+- it structures a simple interface with a few adapters ready to use in-browser and in Node.js (in-memory, localStorage, fileSystem) — so besides using it in-browser (in-memory for testing with smaller datasets and with localStorage for production) initial development on server-side is made easier with small .json database files and in-memory (though not production-ready)
 
 - it is easy to extend, using db._.mixin('functionName', () => {...}) of lodash to create custom functions to transform (manipulate) data with, and writing custom adapters to get() and set() data with to databases (as is apparent by a relatively large number of forks on GitHub)
 

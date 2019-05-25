@@ -7,7 +7,7 @@ This folder isn't parsable JavaScript (better said so — as most likely, along 
 
 - tx2json-core
 - jsonion (using tx2json-core)
-- node-rhizome (dev branch of this repository)
+- node-rhizome (dev branch of repository at https://github.com/fairshift/node-rhizome)
 - rz-gesture-reflection
 - tx2receipts (parser using tx2json-core && jsonion)
 
