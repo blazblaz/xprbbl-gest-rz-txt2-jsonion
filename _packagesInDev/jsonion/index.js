@@ -25,8 +25,9 @@ Functionable JS object keys (& patterns thereof), contained and processed by tx2
  -	Functional […] keys, contained by tx2json-core and processed by jSonion
  	( by necessity within process, before ```js return {...} ``` )
 
- 		… parseExpr() returns names of Expressions somewhere,
- 			elsewhere a regex-valid sequence, put to Trie
+ 		… parseExpr() returns a regex-valid sequence (at start),
+ 			internal names of Expressions (at end),
+ 			both put to Trie
 
  		… As instructs a mapping of a detected inline regex match
 
