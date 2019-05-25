@@ -2,7 +2,7 @@
 
 - it structures a simple interface with a few adapters ready to use in-browser and in Node.js (in-memory, localStorage, fileSystem) — so besides using it in-browser (in-memory for testing with smaller datasets and with localStorage for production) initial development on server-side is made easier with small .json database files and in-memory (though not production-ready)
 
-- it is easy to extend, using db._.mixin('functionName', () => {...}) of lodash to create custom functions to transform (manipulate) data with, and writing custom adapters to get() and set() data with to databases (as is apparent by a relatively large number of forks on GitHub)
+- it is easy to extend, using db._.mixin('functionName', () => {...}) of lodash to create custom functions to transform (manipulate) data with, and writing custom adapters to get() and set() data with to databases (as is apparent by a relatively large number of forks on [GitHub]( https://www.github.com/typicode/lowdb))
 
 
 ## List of optimizations — to improve efficiency (imagined)
@@ -13,16 +13,17 @@
 array.sort( (a, b) => { return (a > b) } )  // combinatorics will tell you how many loops are necessary to sort an array of N items
 array.sort( (a, b) => { return (1 == 1) } ) // you would notice that number of loops equals number of items in array
 
-// Well, another set of functions does the job for Object keys, for example ...
+// Another set of functions sorts Object keys, something like ...
 /*
-Object.keys(data) -> .sort() .forEach(function(v, i) { console.log(v, data[v]); });
+var data = {...someDataObject}
+Object.keys(data).sort().forEach(function(v, i) { console.log(v, data[v]); });
 */
 ```
 
 - Functions to include in sort() loop (using lowdash as reference)
     - _.find(arrayObject, { key: { match: 'value' } },
-    - _.filter( arrObj),
-    - _.merge( obj1, obj2 )
+    - _.filter( arrObj, (item) => { return item.active }, {...rules} )
+    - _.merge( obj1, obj2¸....longtailOfObjects )
     
 
 ### Easier option: Extend or modify { _ } 'lodash' package
@@ -32,12 +33,12 @@ Object.keys(data) -> .sort() .forEach(function(v, i) { console.log(v, data[v]); 
 	-> 	with additional parameter _.operationMixin({egMergeObj}, {intoObj}, sort: 'asc')
         … Is this possible? Possibly requires writing functions anew
 
-        [Some ways of extending lodash](https://bennadel.com/blog/2845-the-philosophy-of-extending-lodash-in-javascript.htm)
+        [A "forbidden" article covering main ways of extending lodash](https://www.bennadel.com/blog/2845-the-philosophy-of-extending-lodash-in-javascript.htm)
           
 - Lodash can be loaded partially (function as a distinct package), without the complete ~65kb (lodash-core) package... However, the _.fn() wrapper is dismantled and some functionalities, such as _.chain(), _.
 
 
-### Option: Modify 'coseq' package as an alternative to lodash' _.fn().chain() model
+### Option: Modify 'coseq' package as an alternative to lodash' _.chain().fn() model
 
-- Instead of looping through array with each chain, set a model of necessary, compatible operations and run multiple in less consequtive loops
+- Instead of looping through array with each function in chain, set a model of necessary, compatible operations and run multiple in less consequtive loops
 - There's more work to be done
