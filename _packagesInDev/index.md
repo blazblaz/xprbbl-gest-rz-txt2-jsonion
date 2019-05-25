@@ -1,14 +1,27 @@
 # Ahoy!
 
-This folder isn't parsable JavaScript. It's used for development of front-end as well as back-end packages to function with Node.js.
+This folder isn't parsable JavaScript (better said so — as most likely, along with root Express app, it won't function properly for a while). It's actively used for development of front-end as well as back-end packages to function with Node.js.
 
 
-**Currently in** (albeit possibly without visible contents)
+**Currently in works (sorted by priority)** (albeit possibly without visible contents)
 
-- jsonion
-- node-rhizome
-- node-rhizome-schema
-- node-rz-agent
+- tx2json-core
+- jsonion (using tx2json-core)
+- node-rhizome (dev branch of this repository)
 - rz-gesture-reflection
-- rz-gesture-reflection-schema
+- tx2receipts (parser using tx2json-core && jsonion)
+
+
+**Currently in works, but invisible**
+
 - text2json
+- node-rhizome-schema
+
+
+**Included, but not in active development**
+- node-rz-agent
+
+
+**Invisible, inactive**
+
+- rz-gesture-reflection-schema

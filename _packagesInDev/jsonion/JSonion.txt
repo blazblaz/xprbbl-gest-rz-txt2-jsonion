@@ -1,0 +1,99 @@
+﻿// # JSONion, jsonIon, jsOnion, jsOnIon
+// A shorthand syntax to change a JSON dataset's structure by a remapping schema... And possibly a meaningful wrapper to a parsing process
+// ... Naming is consequence of a coincidentally fitting overlap, on a conceptual level presenting the process on level of ionized atoms. JSON ions enter a data structure and react with it, so that results can be gathered
+
+// ... Written on Maemo Linux (Nokia N900) by Blaz Beuermann with background music from a friend - Sub.Conscious' set from DNB Konferenca 2017 (in Sieben Linden Oekodorf, im zweite Halb des April 2019)
+
+
+const remap['./facebookArchive/your_posts.json'] = {
+  '.status_updates': {
+    Rename: 'posts',
+    Schema: ['timestamp', 'full_name', 'action', 'post', 'event_name', 'place_name'],
+    '#': {
+      This: 'post',
+      '.data': {
+        Rename: 'post'
+      },
+      '.title': {
+        Remove: true,
+        '/^(.*) updated (.*) status. *$/': {
+          As: ['full_name', 'gender_indicator'],
+          'post.action': 'status_update'
+        },
+        '/^(.*) was attending (.*) at (.*). *$/': {
+          As: ['full_name', 'event_name', 'place_name'],
+          'post.action': 'event_attending'
+        },
+        '/^(.*) shared an event. *$/': {
+          As: ['full_name'], 
+          'post.action': 'event_shared'
+        }
+      }
+    }
+  },
+  'users #': {
+    'full_name': '*.full_name',
+    'ref #': {
+      'timestamp': '{{*.*}}',
+    }
+  },
+  'events #': {
+    This: 'event',
+    Merge: [
+      {
+        'post': {
+          '.timestamp': 'event.*',
+          '.attachments # .data # .event': 'this.*'
+        }
+      }
+    ]
+  },
+  'media #': {
+    This: 'media',
+    Merge: 'post.attachments # .data # .media': 'this.*'
+  }
+}
+
+// Reduced parser map for invoking resolving of expressions, potentially contained in variables (so called 'unstructured data'
+/*
+
+-    First layer in depth within the following object are categories, arbitrarely describing conditions (= by naming these categories), referenced within a map object
+  -  Second layer is a map of expressions, which trigger full-scale parsing processes, parsers focused on distinct purposes (producing more json  data objects)
+
+*/
+const invoke = {  
+  ...ParsersInvokingExpressions // import from 
+}
+
+
+// Ops in a non-conflicting sequence (by partial parsing passes): 1) pre-processing ; 2) process, parsing json object ; 3) post-processing
+/*
+
+- This: 1) creates a key alias, in cases of arrays creating an object, accessible by reference ; 2) 
+
+- Rename: 1) creates a key alias ; 2) checks for aliases, stores to resulting object by keys declared on right-hand (value-side) of variables or by define-only keys(not the querying '.key' type) ; 3) ...
+
+- Merge (by replication aka. creating a copy): 1) creates a binding/subscription for a certain location in onion (a sequence of keys aka. a reference, a pointer) ; 2) holds objects and arrays open for receiving apropriate data subsets as declared by some definition of equality (the right-hand value in a key is copied to the defined object)
+
+- Schema: 1) when defined, it augments specific objects, enabling explicit including of properties and subsets (with '*' as an open-ended) ; 2) including and excluding of (the forementioned) ; 3) sorting data subsets in specific object branches by keys
+
+*/
+
+
+const JSONion = (jsonObj, onionMap) => {
+  
+  // Initiates [in-memory] storage for the process
+  var db = {
+    map: {
+      listOfAliases: {}, // rename: (true || false)
+      result: {}
+    }
+  }
+
+  // Compiles resulting dataset (result)
+  
+}
+
+
+// Schellen die Schalle, Titel Tesen Temperamente (Sonntag abends)
+const peel = (obj, ) => 
