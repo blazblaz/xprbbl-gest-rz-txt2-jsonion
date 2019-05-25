@@ -6,21 +6,30 @@ import { coreRunner, generateExprTrie, parseExpr } from 'tx2json-core' /*
 
 Functionable JS object keys (& patterns thereof), contained and processed by tx2json-core:
 
-	… Are (probably) bound to a media type of JSON: json.{{furtherKeys}} …
+	… Are these maybe bound to a media type of JSON: json.{{furtherKeys}} …
 
- -	untouched (remain as they are)
+ -	untouched and unprocessed (moved to a ExprTrie as they are)
  		Alias, deduct, Rename, As
- ->	transformed to ..
+
+
+ -	The following are replaced as instructions generated for coreRunner (put to Trie)
 
  		CloneProp instruction key & ...
 		- Write to TX storage supplied to tx2json as obj.key: `.This.${key} -> key`
 		- Write to temporary/contextual TX storage object (This): `.${key} -> This.${new}`
 		… right-to-left variation: `${new} <- .${key}`
+		… right-hand variation (with a ${pushToArray} mapping instruction): 
+			'.status_updates # -> posts #': `${new} <- .${key}`
+
 
  -	Functional […] keys, contained by tx2json-core and processed by jSonion
  	( by necessity within process, before ```js return {...} ``` )
 
- 		parseExpr() remapped, bound with As instruction
+ 		… parseExpr() returns names of Expressions somewhere,
+ 			elsewhere a regex-valid sequence, put to Trie
+
+ 		… As instructs a mapping of a detected inline regex match
+
 		- '/categories/ -> tags #...This': [expressionsList]:
 			-> somewhere in Trie of Expression Chains
 				{ 
