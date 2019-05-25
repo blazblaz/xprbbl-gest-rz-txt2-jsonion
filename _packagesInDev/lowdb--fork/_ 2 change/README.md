@@ -11,7 +11,7 @@
 
 ```js
 array.sort( (a, b) => { return (a > b) } )  // combinatorics will tell you how many loops are necessary to sort an array of N items
-array.sort( (a, b) => { return (1 == 1) } ) // you would notice that number of loops equals number of items in array
+array.sort( (a, b) => { return (1 == 1) } ) // you would notice that number of loops equals number of items in array (or N -1 ?)
 
 // Another set of functions sorts Object keys, something like ...
 /*
