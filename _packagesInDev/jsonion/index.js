@@ -52,6 +52,13 @@ export default jSonion
 // Transforms JS objects to JSON
 const jSonion = () => { return {
 
+
+
+	//	... should take in a jsOnion type schema
+	//			returning a Trie of Expressions, ready for further parsing
+
+
+
 // Abbreviated from (relevant types of expressions):
 // - ./json-schema with JSONIon.md
 // - ../tx2receipts/index.js
