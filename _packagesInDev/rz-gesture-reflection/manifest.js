@@ -1,36 +1,31 @@
+﻿//
+// # Written on a mission to produce a readable DB manifest file ...
+/*
 
-// #  Q:   How readable is this manifest file?
-//     A: [Now you go]
+ -  Outstanding tasks: 
+    include data samples ; outstanding ambiguities to resolve later are marked with [!!!]
 
-// #  Q:   And after you've seen it in a code editor (eg. Sublime Text),
-//        with 1 tab = 2 spaces setting?
-//       (default might be 1 : 4 - screens are smaller these days, though)
+ -  Decisions in consideration are positioned as appendix to this document
+   (eg. considering integration with Redux)
 
-// ...     There's some ambiguity with code marked with [!!!]
-//        -> decision making process is positioned after the rest of code
+*/
 
 
-//
-//////
+import { Rhizome as Rz, amendActions } from './db.augmentation' // [!!!]
+import { 
+  Platform, Imported, Offline, amendActions 
+} from 'rz.actions' /* Integrating actions
 
-import { Platform, Imported, Offline } from './rhizome.actions'
-/* List of possibilities to read and write to state of data points
-  (when disabled for a collection, rules of data manipulation can be defined elsewhere in application) */
-//
-// ... possibly compatible with Redux JS state management library on Frontend
-/*     Let's see (at the end of file) ... */
+... Data transformation functions to read (query) and write (mutate) data state
+( = actions at top layer of API) are appended to collections here and are amendable later */
 
-import Rz from './rhizome.augment'
 
-//////
+////// External libraries
 
-import { Abbr } from 'jsonion'
+import { Abbr } from 'tx2json-core'
 import _ from 'lodash'
 
 //////
-//
-
-
 
 
 /*
@@ -441,7 +436,7 @@ return collections }
 
 
 //
-// Redux linked with 'rhizome.actions'
+// Redux linked with 'actions'
 
 // 1) Action namespace definition (constant)
 export const AUTH_SET_FROM_COOKIE = 'boilerplate/App/AUTH_SET_FROM_COOKIE';
